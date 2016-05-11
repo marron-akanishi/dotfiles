@@ -1,8 +1,8 @@
 TweetVim
 bitly.vim
-clang_complete
 lightline.vim
 neobundle.vim
+neocomplete.vim
 nerdtree
 open-browser.vim
 seiya.vim
@@ -10,6 +10,7 @@ twibill.vim
 unite-outline
 unite.vim
 vim-autoclose
+vim-clang
 vim-endwise
 vim-submode
 vimproc

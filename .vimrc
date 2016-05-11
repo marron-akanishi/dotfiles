@@ -100,7 +100,7 @@ NeoBundle 'basyura/twibill.vim'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'basyura/bitly.vim'
-NeoBundle 'Rip-Rip/clang_complete'
+NeoBundle 'justmao945/vim-clang'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'kana/vim-submode'
 NeoBundle 'itchyny/lightline.vim'
@@ -114,7 +114,7 @@ filetype plugin indent on
 let g:seiya_auto_enable = 1
 " neocomplete
 let g:neocomplete#enable_at_startup               = 1
-let g:neocomplete#auto_completion_start_length    = 3
+let g:neocomplete#auto_completion_start_length    = 2
 let g:neocomplete#enable_ignore_case              = 1
 let g:neocomplete#enable_smart_case               = 1
 let g:neocomplete#enable_camel_case               = 1
@@ -123,8 +123,50 @@ let g:neocomplete#sources#buffer#cache_limit_size = 1000000
 let g:neocomplete#sources#tags#cache_limit_size   = 30000000
 let g:neocomplete#enable_fuzzy_completion         = 1
 let g:neocomplete#lock_buffer_name_pattern        = '\*ku\*'
+" _(アンダースコア)区切りの補完を有効化
+let g:neocomplete#enable_underbar_completion = 1
+" ポップアップメニューで表示される候補の数
+let g:neocomplete#max_list = 20
+" シンタックスをキャッシュするときの最小文字長
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+" preview window を閉じない
+let g:neocomplete#enable_auto_close_preview = 0
+autocmd InsertLeave * silent! pclose!
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 " tweetvim
 let g:tweetvim_display_source = 1
+" NERDtree
+let NERDTreeShowHidden=1
+" vim-clang
+" disable auto completion for vim-clang
+let g:clang_auto = 0
+" default 'longest' can not work with neocomplete
+let g:clang_c_completeopt   = 'menuone'
+let g:clang_cpp_completeopt = 'menuone'
+if executable('clang-3.6')
+    let g:clang_exec = 'clang-3.6'
+elseif executable('clang-3.5')
+    let g:clang_exec = 'clang-3.5'
+elseif executable('clang-3.4')
+    let g:clang_exec = 'clang-3.4'
+else
+    let g:clang_exec = 'clang'
+endif
+if executable('clang-format-3.6')
+    let g:clang_format_exec = 'clang-format-3.6'
+elseif executable('clang-format-3.5')
+    let g:clang_format_exec = 'clang-format-3.5'
+elseif executable('clang-format-3.4')
+    let g:clang_format_exec = 'clang-format-3.4'
+else
+    let g:clang_exec = 'clang-format'
+endif
+let g:clang_cpp_options = '-std=c++11 -stdlib=libc++'
+
 
 " キー設定
 call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
@@ -140,19 +182,28 @@ call submode#enter_with('undo/redo', 'n', '', 'g+', 'g+')
 call submode#map('undo/redo', 'n', '', '-', 'g-')
 call submode#map('undo/redo', 'n', '', '+', 'g+')
 inoremap jj <ESC>
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+	"return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+	" For no inserting <CR> key.
+    return pumvisible() ? "\<C-y>" : "\<CR>"
+endfunction
 nnoremap split :vsplit
 nnoremap twitter :TweetVimHomeTimeline
 nnoremap tweet :TweetVimCommandSay
 nnoremap tree :NERDTreeToggle
 nnoremap tab :tabnew
 nnoremap shell :VimShell
+nnoremap inter :VimShellInteractive
+nnoremap send :VimShellSendString
 imap <F11> <nop>
 set pastetoggle=<F11>
 
 " 起動時コマンド
 if has('vim_starting')
     tabnew
-    vsplit
     normal! gt
     autocmd VimEnter * execute 'NERDTreeToggle'
 endif
