@@ -12,7 +12,7 @@ set backspace=start,eol,indent
 "  ~ - ~            ノーマルモード
 set whichwrap=b,s,[,],,~
 " マウス機能有効化
-set mouse=a
+" set mouse=a
 " シンタックスハイライト有効化 (背景黒向け。白はコメントアウト
 " されている設定を使用)
 syntax on
@@ -50,7 +50,7 @@ set encoding =UTF-8 "標準文字コードをUTF-8に指定する
 set hidden           "ファイル変更中でも他のファイルを開けるようにする
 set autoread         "ファイル内容が変更されると自動読み込みする
 
-" neobundle settings {{{
+" neobundle settings
 if has('vim_starting')
   set nocompatible
   " neobundle をインストールしていない場合は自動インストール
@@ -104,14 +104,27 @@ NeoBundle 'justmao945/vim-clang'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'kana/vim-submode'
 NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'altercation/vim-colors-solarized'
 
 " vimrcに記述されたプラグインでインストールされていないものがないかチェックする
 NeoBundleCheck
 call neobundle#end()
 filetype plugin indent on
 
+" カラースキーム
+" colorscheme hybrid
 " 背景透過
 let g:seiya_auto_enable = 1
+" lightline
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'component': {
+      \   'readonly': '%{&readonly?"x":""}',
+      \ },
+      \ 'separator': {'left': '⮀', 'right': '⮂'},
+      \ 'subseparator': {'left': '⮁', 'right': '⮃'}
+      \ }
 " neocomplete
 let g:neocomplete#enable_at_startup               = 1
 let g:neocomplete#auto_completion_start_length    = 2
@@ -167,7 +180,6 @@ else
 endif
 let g:clang_cpp_options = '-std=c++11 -stdlib=libc++'
 
-
 " キー設定
 call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
 call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
@@ -196,8 +208,6 @@ nnoremap tweet :TweetVimCommandSay
 nnoremap tree :NERDTreeToggle
 nnoremap tab :tabnew
 nnoremap shell :VimShell
-nnoremap inter :VimShellInteractive
-nnoremap send :VimShellSendString
 imap <F11> <nop>
 set pastetoggle=<F11>
 

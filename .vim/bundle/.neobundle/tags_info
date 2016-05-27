@@ -11,7 +11,9 @@ unite-outline
 unite.vim
 vim-autoclose
 vim-clang
+vim-colors-solarized
 vim-endwise
+vim-hybrid
 vim-submode
 vimproc
 vimshell

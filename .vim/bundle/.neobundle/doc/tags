@@ -23,6 +23,16 @@
 'NERDTreeWinPos'	NERD_tree.txt	/*'NERDTreeWinPos'*
 'NERDTreeWinSize'	NERD_tree.txt	/*'NERDTreeWinSize'*
 'loaded_nerd_tree'	NERD_tree.txt	/*'loaded_nerd_tree'*
+'solarized_bold'	solarized.txt	/*'solarized_bold'*
+'solarized_contrast'	solarized.txt	/*'solarized_contrast'*
+'solarized_degrade'	solarized.txt	/*'solarized_degrade'*
+'solarized_hitrail'	solarized.txt	/*'solarized_hitrail'*
+'solarized_italic'	solarized.txt	/*'solarized_italic'*
+'solarized_menu'	solarized.txt	/*'solarized_menu'*
+'solarized_termcolors'	solarized.txt	/*'solarized_termcolors'*
+'solarized_termtrans'	solarized.txt	/*'solarized_termtrans'*
+'solarized_underline'	solarized.txt	/*'solarized_underline'*
+'solarized_visibility'	solarized.txt	/*'solarized_visibility'*
 :NERDTree	NERD_tree.txt	/*:NERDTree*
 :NERDTreeCWD	NERD_tree.txt	/*:NERDTreeCWD*
 :NERDTreeClose	NERD_tree.txt	/*:NERDTreeClose*
@@ -302,6 +312,7 @@ ac_turnon	AutoClose.txt	/*ac_turnon*
 ac_wrapPrefix	AutoClose.txt	/*ac_wrapPrefix*
 ac_wrapSelection	AutoClose.txt	/*ac_wrapSelection*
 b:neocomplete_sources	neocomplete.txt	/*b:neocomplete_sources*
+before	solarized.txt	/*before*
 bitly-contents	bitly.txt	/*bitly-contents*
 bitly-install	bitly.txt	/*bitly-install*
 bitly-introduction	bitly.txt	/*bitly-introduction*
@@ -895,6 +906,16 @@ openbrowser-thanks	openbrowser.txt	/*openbrowser-thanks*
 openbrowser-url-detection	openbrowser.txt	/*openbrowser-url-detection*
 openbrowser-variables	openbrowser.txt	/*openbrowser-variables*
 openbrowser.txt	openbrowser.txt	/*openbrowser.txt*
+solarized	solarized.txt	/*solarized*
+solarized-colors	solarized.txt	/*solarized-colors*
+solarized-colorscheme	solarized.txt	/*solarized-colorscheme*
+solarized-help	solarized.txt	/*solarized-help*
+solarized-install	solarized.txt	/*solarized-install*
+solarized-menu	solarized.txt	/*solarized-menu*
+solarized-options	solarized.txt	/*solarized-options*
+solarized-term	solarized.txt	/*solarized-term*
+solarized-togglebg	solarized.txt	/*solarized-togglebg*
+solarized.vim	solarized.txt	/*solarized.vim*
 submode	submode.txt	/*submode*
 submode#current()	submode.txt	/*submode#current()*
 submode#enter_with()	submode.txt	/*submode#enter_with()*
@@ -918,6 +939,9 @@ submode-introduction	submode.txt	/*submode-introduction*
 submode-leaving	submode.txt	/*submode-leaving*
 submode-variables	submode.txt	/*submode-variables*
 submode.txt	submode.txt	/*submode.txt*
+toggle-background	solarized.txt	/*toggle-background*
+toggle-bg	solarized.txt	/*toggle-bg*
+togglebg	solarized.txt	/*togglebg*
 tweetvim	tweetvim.txt	/*tweetvim*
 tweetvim-commands	tweetvim.txt	/*tweetvim-commands*
 tweetvim-contents	tweetvim.txt	/*tweetvim-contents*
@@ -1278,8 +1302,10 @@ unite-variables	unite.txt	/*unite-variables*
 unite.txt	unite.txt	/*unite.txt*
 unite.vim	unite.txt	/*unite.vim*
 unite_default_key_mappings	unite.txt	/*unite_default_key_mappings*
+urxvt	solarized.txt	/*urxvt*
 v_<Plug>(unite_toggle_selected_candidates)	unite.txt	/*v_<Plug>(unite_toggle_selected_candidates)*
 v_vimshell_default_key_mappings	vimshell.txt	/*v_vimshell_default_key_mappings*
+vim-colors-solarized	solarized.txt	/*vim-colors-solarized*
 vimproc	vimproc.txt	/*vimproc*
 vimproc#cmd#system()	vimproc.txt	/*vimproc#cmd#system()*
 vimproc#delete_trash()	vimproc.txt	/*vimproc#delete_trash()*
@@ -1487,3 +1513,4 @@ webapi-xml.parseFile()	webapi-xml.txt	/*webapi-xml.parseFile()*
 webapi-xml.parseURL()	webapi-xml.txt	/*webapi-xml.parseURL()*
 webapi-xml.txt	webapi-xml.txt	/*webapi-xml.txt*
 webapi.txt	webapi.txt	/*webapi.txt*
+without	solarized.txt	/*without*
