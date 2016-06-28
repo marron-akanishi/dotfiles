@@ -1,6 +1,9 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/marron/.oh-my-zsh
-# export PATH=$PATH:/opt/local/bin
+
+export ANT_HOME=/usr/local/apache-ant
+export SDK_HOME=/Users/marron/android-sdk
+export NDK_HOME=/Users/marron/android-ndk
 alias vim='/opt/local/bin/vim'
 
 # Set name of the theme to load.
@@ -11,7 +14,7 @@ ZSH_THEME="powerline"
 # powerline
 POWERLINE_HIDE_HOST_NAME="true"
 POWERLINE_HIDE_GIT_PROMPT_STATUS="true"
-POWERLINE_SHOW_GIT_ON_RIGHT="true"
+#POWERLINE_SHOW_GIT_ON_RIGHT="false"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -59,7 +62,12 @@ plugins=(git)
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/opt/local/bin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin"
+export PATH=/opt/local/bin:$PATH
+export PATH=$ANT_HOME/bin:$PATH
+export PATH=$SDK_HOME/tools:$PATH
+export PATH=$SDK_HOME/platform-tools:$PATH
+export PATH=$NDK_HOME:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh

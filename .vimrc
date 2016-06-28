@@ -106,6 +106,7 @@ NeoBundle 'kana/vim-submode'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle "osyo-manga/vim-snowdrop"
 
 " vimrcに記述されたプラグインでインストールされていないものがないかチェックする
 NeoBundleCheck
@@ -118,11 +119,11 @@ filetype plugin indent on
 let g:seiya_auto_enable = 1
 " lightline
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
+      \ 'colorscheme': 'default',
       \ 'component': {
       \   'readonly': '%{&readonly?"x":""}',
       \ },
-      \ 'separator': {'left': '⮀', 'right': '⮂'},
+      \ 'separator': {'left': '', 'right': ''},
       \ 'subseparator': {'left': '⮁', 'right': '⮃'}
       \ }
 " neocomplete
@@ -139,7 +140,7 @@ let g:neocomplete#lock_buffer_name_pattern        = '\*ku\*'
 " _(アンダースコア)区切りの補完を有効化
 let g:neocomplete#enable_underbar_completion = 1
 " ポップアップメニューで表示される候補の数
-let g:neocomplete#max_list = 20
+let g:neocomplete#max_list = 10
 " シンタックスをキャッシュするときの最小文字長
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 " preview window を閉じない
@@ -150,16 +151,59 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType c setlocal omnifunc=ccomplete#Complete
+autocmd FileType cpp setlocal omnifunc=cppcomplete#Complete
+autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+let g:neocomplete#sources#snowdrop#enable = 1
+" 補完に時間がかかってもスキップしない設定
+let g:neocomplete#skip_auto_completion_time = ""
+"インクルードパスの指定
+let g:neocomplete#include_paths = {
+  \ 'cpp'  : '.,/opt/local/include/gcc46/c++,/opt/local/include,/usr/include',
+  \ 'c'    : '.,/usr/include',
+  \ 'ruby' : '.,$HOME/.rvm/rubies/**/lib/ruby/1.8/',
+  \ }
+"インクルード文のパターンを指定
+let g:neocomplete#include_patterns = {
+  \ 'cpp' : '^\s*#\s*include',
+  \ 'ruby' : '^\s*require',
+  \ 'perl' : '^\s*use',
+  \ }
+"インクルード先のファイル名の解析パターン
+let g:neocomplete#include_exprs = {
+  \ 'ruby' : substitute(v:fname,'::','/','g')
+  \ }
+" ファイルを探す際に、この値を末尾に追加したファイルも探す。
+let g:neocomplete#include_suffixes = {
+  \ 'ruby' : '.rb',
+  \ 'haskell' : '.hs'
+  \ }
 " tweetvim
 let g:tweetvim_display_source = 1
 " NERDtree
 let NERDTreeShowHidden=1
+" snowdrop
+" libclang が保存されているディレクトリへのパス
+let g:snowdrop#libclang_directory = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/"
+" インクルードディレクトリのパスを設定
+let g:snowdrop#include_paths = {
+\   "cpp" : ".,/opt/local/include/gcc46/c++,/opt/local/include,/usr/include",
+\   "c" : ".,/opt/local/include/gcc46/c++,/opt/local/include,/usr/include",
+\}
+" " 使用する clang のコマンドオプション
+let g:snowdrop#command_options = {
+\   "cpp" : "-std=c++1y",
+\}
 " vim-clang
 " disable auto completion for vim-clang
 let g:clang_auto = 0
 " default 'longest' can not work with neocomplete
 let g:clang_c_completeopt   = 'menuone'
 let g:clang_cpp_completeopt = 'menuone'
+let g:clang_use_lib = 1
+if has('mac')
+    let g:clang_library_path="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/"
+endif
 if executable('clang-3.6')
     let g:clang_exec = 'clang-3.6'
 elseif executable('clang-3.5')
@@ -168,15 +212,6 @@ elseif executable('clang-3.4')
     let g:clang_exec = 'clang-3.4'
 else
     let g:clang_exec = 'clang'
-endif
-if executable('clang-format-3.6')
-    let g:clang_format_exec = 'clang-format-3.6'
-elseif executable('clang-format-3.5')
-    let g:clang_format_exec = 'clang-format-3.5'
-elseif executable('clang-format-3.4')
-    let g:clang_format_exec = 'clang-format-3.4'
-else
-    let g:clang_exec = 'clang-format'
 endif
 let g:clang_cpp_options = '-std=c++11 -stdlib=libc++'
 
@@ -194,6 +229,7 @@ call submode#enter_with('undo/redo', 'n', '', 'g+', 'g+')
 call submode#map('undo/redo', 'n', '', '-', 'g-')
 call submode#map('undo/redo', 'n', '', '+', 'g+')
 inoremap jj <ESC>
+inoremap <C-f> <C-x><C-o>
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>

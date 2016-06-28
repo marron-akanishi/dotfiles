@@ -14,6 +14,7 @@ vim-clang
 vim-colors-solarized
 vim-endwise
 vim-hybrid
+vim-snowdrop
 vim-submode
 vimproc
 vimshell
