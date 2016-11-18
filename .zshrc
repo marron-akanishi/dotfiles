@@ -5,6 +5,7 @@ export ANT_HOME=/usr/local/apache-ant
 export SDK_HOME=/Users/marron/android-sdk
 export NDK_HOME=/Users/marron/android-ndk
 alias vim='/opt/local/bin/vim'
+alias emacs='/opt/local/bin/vim'
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -68,6 +69,7 @@ export PATH=$ANT_HOME/bin:$PATH
 export PATH=$SDK_HOME/tools:$PATH
 export PATH=$SDK_HOME/platform-tools:$PATH
 export PATH=$NDK_HOME:$PATH
+export PATH=/usr/local/share/dotnet:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh

@@ -1,0 +1,8 @@
+BasedOnStyle: Google
+IndentWidth: 4
+AllowShortIfStatementsOnASingleLine: true
+AlignAfterOpenBracket: true
+BinPackArguments: false
+CommentPragmas: ^
+IndentCaseLabels: true
+Standard: Auto
