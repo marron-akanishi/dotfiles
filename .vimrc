@@ -94,10 +94,6 @@ endif
 NeoBundle 'Townk/vim-autoclose'
 NeoBundleLazy 'tpope/vim-endwise', {
   \ 'autoload' : { 'insert' : 1,}}
-NeoBundle 'basyura/TweetVim'
-NeoBundle 'mattn/webapi-vim'
-NeoBundle 'basyura/twibill.vim'
-NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'basyura/bitly.vim'
 NeoBundle 'justmao945/vim-clang'
@@ -239,8 +235,6 @@ function! s:my_cr_function()
     return pumvisible() ? "\<C-y>" : "\<CR>"
 endfunction
 nnoremap split :vsplit
-nnoremap twitter :TweetVimHomeTimeline
-nnoremap tweet :TweetVimCommandSay
 nnoremap tree :NERDTreeToggle
 nnoremap tab :tabnew
 nnoremap shell :VimShell
@@ -251,5 +245,4 @@ set pastetoggle=<F11>
 if has('vim_starting')
     tabnew
     normal! gt
-    autocmd VimEnter * execute 'NERDTreeToggle'
 endif
