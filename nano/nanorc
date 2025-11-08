@@ -1,0 +1,32 @@
+## nano設定ファイルサンプル
+
+### 基本的な表示設定
+# 行番号を表示する
+set linenumbers
+# カーソル位置の行と列を常に表示する
+set constantshow
+
+### 編集を快適にする設定
+# 自動でインデントする
+set autoindent
+# Tabキーの幅をスペース4文字分に設定
+set tabsize 4
+# 長い行を自動で折り返して表示する
+set softwrap
+# マウス操作を有効にする
+set mouse
+
+### ちょっと高度な便利設定
+# 検索時に大文字と小文字を区別する
+set casesensitive
+# ファイルを閉じたときの位置を記憶する
+set positionlog
+# 単語の末尾のすぐ後ろにカーソルを移動できるようにする
+set afterends
+# 空白も単語としてカーソル移動する
+set atblanks
+
+### シンタックスハイライト
+# デフォルトで用意されているハイライト設定をすべて読み込む
+# パスは環境によって異なる場合があります (e.g., /usr/local/share/nano/)
+include "/usr/share/nano-syntax-highlighting/*.nanorc"
